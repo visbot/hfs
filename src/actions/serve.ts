@@ -60,5 +60,4 @@ export async function serve(pathName: string = process.cwd(), options) {
 
             logger.info(`Running on ${cyan('http://localhost:' + options.port)}.`);
         });
-        ;
 }

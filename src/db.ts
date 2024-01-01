@@ -1,13 +1,15 @@
+import { cyan } from 'picocolors';
 import { fileExists } from './fs';
-import { getStorePath } from './utils';
+import { getFilePath, getStorePath } from './utils';
+import { readFile, rm, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import logger from './log';
-import { readFile, writeFile } from 'node:fs/promises';
 
 const DB_FILE = 'db.json';
 
 export class Database {
     dbPath: string;
+    debug: boolean;
     force: boolean;
     state: Record<string, unknown>;
 
@@ -15,6 +17,7 @@ export class Database {
         const storePath = getStorePath(options.cwd);
 
         this.dbPath = resolve(storePath, DB_FILE);
+        this.debug = options.debug;
         this.force = options.force;
     }
 
@@ -51,6 +54,10 @@ export class Database {
                 return;
             }
 
+            if (this.debug) {
+                console.error(error);
+            }
+
             logger.fatalError('Failed to read database is corrupted.');
         }
     }
@@ -66,7 +73,30 @@ export class Database {
         try {
             await writeFile(this.dbPath, JSON.stringify(this.state, null, 2));
         } catch (error) {
+            if (this.debug) {
+                console.error(error);
+            }
+
             logger.fatalError('Failed to write database.');
+        }
+    }
+
+    async remove(removeHash) {
+        const targetPath = getFilePath(removeHash);
+
+        try {
+            await rm(targetPath);
+        } catch (error) {
+            if (this.debug) {
+                console.error(error);
+            }
+
+            logger.fatalError('Failed to delete file.');
+        }
+        
+        this.state = {
+            ...this.state,
+            [removeHash]: undefined
         }
     }
 }

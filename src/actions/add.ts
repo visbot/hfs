@@ -40,7 +40,6 @@ export async function add(filePaths: string[], options) {
             logger.timeEnd(message);
         })
     );
+
     await db.save();
-
-
 }

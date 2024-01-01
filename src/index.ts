@@ -34,6 +34,21 @@ export function main() {
 
             await add(args, options)
         });
+
+    program
+        .command('rm <file...>')
+        .description('adds one of more files to the virtual file-system')
+        .option('-D, --debug', 'print additional debug information', false)
+        .option('-w, --cwd <path>', 'specify current work directory', process.cwd())
+        .option('-f, --force', '')
+        .action(async (args, options) => {
+            if (options.debug) {
+                console.log('remove', { args, options });
+            }
+            const { remove } = await import('./actions/remove');
+
+            await remove(args, options)
+        });
         
     program
         .command('serve [path]')
