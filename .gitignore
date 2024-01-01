@@ -16,8 +16,8 @@ yarn.lock
 tslint-to-eslint-config.log
 
 # build
-bin/
-lib/
+/bin
+/lib
 
 # project specific
 /.hfs

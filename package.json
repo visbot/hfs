@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "bin": {
-    "hfs": "./cli/index.js"
+    "hfs": "./bin/index.js"
   },
   "type": "module",
   "engine": {

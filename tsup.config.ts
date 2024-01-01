@@ -7,7 +7,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: 'esm',
   minify: true,
-	outDir: 'cli',
+	outDir: 'bin',
   sourcemap: process.env.NODE_ENV !== 'production',
   treeshake: 'recommended'
 });

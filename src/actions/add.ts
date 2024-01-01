@@ -38,8 +38,6 @@ export async function add(filePaths: string[], options) {
                     [fileHash]: await getStats(filePath)
                 });
             logger.timeEnd(message);
-
-            // console.log(database.load())
         })
     );
     await db.save();
