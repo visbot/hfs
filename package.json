@@ -18,6 +18,12 @@
 		"type": "git",
 		"url": "https://github.com/visbot/hfs.git"
 	},
+	"files": [
+		"bin",
+		"lib",
+		"LICENSE",
+		"README.md"
+	],
 	"scripts": {
 		"build": "npm-run-all --parallel build:*",
 		"build:cli": "tsup src/cli.ts --outDir bin",
