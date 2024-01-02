@@ -10,7 +10,12 @@ export class Database {
 	dbPath: string;
 	debug: boolean;
 	force: boolean;
-	state: Record<string, unknown>;
+	state: {
+		version: number;
+		created: string;
+		modified: string;
+		files: Record<string, unknown>;
+	};
 
 	constructor(options) {
 		const storePath = getStorePath(options.cwd);
@@ -25,11 +30,16 @@ export class Database {
 	 * @returns {Record<string, unknown>}
 	 */
 	init() {
-		return {}
+		return {
+			version: 0,
+			created: new Date().toISOString(),
+			modified: null,
+			files: {}
+		}
 	}
 
 	get() {
-		return this.state;
+		return this.state.files;
 	}
 
 	/**
@@ -64,15 +74,19 @@ export class Database {
 	}
 
 	update(newValue) {
-		this.state = {
-			...this.state,
-			...newValue
+		this.state.files = {
+				...(this.state.files || {}),
+				...newValue
 		}
 	}
 
 	async save() {
+		const data = {
+			...this.state,
+			modified: new Date().toISOString()
+		}
 		try {
-			await writeFile(this.dbPath, JSON.stringify(this.state, null, 2));
+			await writeFile(this.dbPath, JSON.stringify(data, null, 2));
 		} catch (error) {
 			if (this.debug) {
 				console.error(error);
