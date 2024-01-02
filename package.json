@@ -22,8 +22,8 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"author": "visbot networks",
+	"license": "MIT",
 	"dependencies": {
 		"commander": "^11.1.0",
 		"glob": "^10.3.10",
