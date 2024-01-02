@@ -56,6 +56,7 @@ export function main() {
         .description('serves file-hashes on the virtual file-system')
         .option('-D, --debug', 'prints additional debug information', false)
         .option('-p, --port <port>', 'specifies the port', '3000')
+        .option('-P, --public', 'makes listing public', false)
         .action(async (args, options) => {
             if (options.debug) {
                 console.log('serve', { args, options });

@@ -25,9 +25,11 @@ export class Database {
 	 * @returns {Record<string, unknown>}
 	 */
 	init() {
-		return {
-			new: true
-		}
+		return {}
+	}
+
+	get() {
+		return this.state;
 	}
 
 	/**
