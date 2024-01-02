@@ -4,7 +4,7 @@ export default defineConfig({
 	target: 'esnext',
   clean: true,
   dts: true,
-  entry: ['src/index.ts'],
+  entry: ['src/cli.ts'],
   format: 'esm',
   minify: true,
 	outDir: 'bin',
