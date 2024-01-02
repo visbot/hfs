@@ -1,10 +1,10 @@
-import { mkdir } from 'node:fs/promises'; 
-import { join } from 'node:path'; 
+import { mkdir } from 'node:fs/promises';
+import { join } from 'node:path';
 import { getStorePath } from '../utils';
 import { fileExists } from '../fs';
 import logger from '../log';
 
-export async function init(pathName: string = process.cwd(), options) {    
+export async function init(pathName: string = process.cwd(), options) {
     const storePath = getStorePath(pathName);
 
     if (await fileExists(storePath) && !options.force) {

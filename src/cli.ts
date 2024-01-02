@@ -19,7 +19,7 @@ export function main() {
 
             await init(args, options)
         });
-        
+
     program
         .command('add <file...>')
         .description('adds one of more files to the virtual file-system')
@@ -49,7 +49,7 @@ export function main() {
 
             await remove(args, options)
         });
-        
+
     program
         .command('serve [path]')
         .description('serves file-hashes on the virtual file-system')
@@ -59,7 +59,7 @@ export function main() {
             if (options.debug) {
                 console.log('serve', { args, options });
             }
-            
+
             const { serve } = await import('./actions/serve');
 
             await serve(args, options)
