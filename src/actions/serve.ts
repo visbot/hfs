@@ -81,7 +81,7 @@ export async function serve(pathName: string = process.cwd(), options) {
 						<ul>${listItems.join('')}</ul>
 					</body>
 				</html>
-			`);
+			`.replace(/(\t|\r?\n)/g, ''));
 
 		})
 
