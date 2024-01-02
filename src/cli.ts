@@ -36,8 +36,9 @@ export function main() {
         });
 
     program
-        .command('rm <file...>')
+        .command('remove <file...>')
         .description('removes one of more file-hashes from the virtual file-system')
+				.alias('rm')
         .option('-D, --debug', 'prints additional debug information', false)
         .option('-w, --cwd <path>', 'specifies current work directory', process.cwd())
         .option('-f, --force', '')
