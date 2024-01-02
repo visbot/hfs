@@ -1,6 +1,6 @@
 {
 	"name": "@visbot/hfs",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A simple CAS consisting of CLI and web server",
 	"author": "visbot networks",
 	"license": "MIT",
