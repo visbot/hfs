@@ -18,7 +18,7 @@
 		"dev": "npm-run-all --parallel dev:*",
 		"dev:cli": "npm run build:cli -- --watch",
 		"dev:lib": "npm run build:lib -- --watch",
-		"lint:ts": "eslint ./src --ignore-path .gitignore",
+		"lint": "eslint ./src --ignore-path .gitignore",
 		"prepack": "npm run build",
 		"prepare": "husky install",
 		"test": "echo \"Error: no test specified\" && exit 1"
