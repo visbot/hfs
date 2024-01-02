@@ -22,6 +22,30 @@ To use the tool without installation, you can use the `npx` command:
 $ npx @visbot/hfs
 ```
 
+## Usage
+
+### CLI
+
+Once setup, you can run `hfs --help` to list available options:
+
+```txt
+$ hfs
+
+Usage: hfs [options] [command]
+
+Options:
+  -h, --help                     display help for command
+
+Commands:
+  init [options] [path]          initializes the virtual file-system
+  add [options] <file...>        adds one of more files to the virtual file-system
+  remove|rm [options] <file...>  removes one of more file-hashes from the virtual file-system
+  serve [options] [path]         serves file-hashes on the virtual file-system
+  help [command]                 display help for command
+```
+
+Refer to the help for each sub-command to list its options.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
