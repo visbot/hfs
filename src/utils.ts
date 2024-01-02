@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { constants, createReadStream } from 'node:fs';
 import { access } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
 
 export async function getHashFromStream(stream, algorithm = 'sha256') {
 	const hashingFunction = createHash(algorithm);

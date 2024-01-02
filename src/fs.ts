@@ -1,11 +1,13 @@
 import { access, copyFile, mkdir, stat } from 'fs/promises';
 import { constants } from 'fs';
 import { dirname } from 'node:path';
+import log from "./log";
 
 export async function mkDir(path: string) {
 	try {
 		await mkdir(path, { recursive: true });
 	} catch (error) {
+		log.fatalError(`Could not create folder "${path}."`);
 	}
 }
 
