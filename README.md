@@ -16,6 +16,12 @@ Use your preferred [NodeJS](https://nodejs.org) package manager to install the C
 $ npm install --global @visbot/hfs
 ```
 
+To use the tool without installation, you can use the `npx` command:
+
+```sh
+$ npx @visbot/hfs
+```
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
