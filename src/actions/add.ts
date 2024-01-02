@@ -1,9 +1,9 @@
 import { basename } from 'node:path';
 import { copy, fileExists, getStats } from '../fs';
-import { cyan } from 'picocolors';
 import { Database } from 'src/db';
 import { getFilePath, getHashFromFile, getStorePath } from '../utils';
 import { glob } from 'glob';
+import colors from 'picocolors';
 import logger from '../log';
 
 export async function add(filePaths: string[], options) {
@@ -26,11 +26,11 @@ export async function add(filePaths: string[], options) {
 			const targetPath = getFilePath(fileHash);
 
 			if (await fileExists(targetPath) && !options.force) {
-				logger.warn(`Skipping ${cyan(basename(filePath))}. Use --force to overwrite.`);
+				logger.warn(`Skipping ${colors.cyan(basename(filePath))}. Use --force to overwrite.`);
 				return;
 			}
 
-			const message = `Copying ${cyan(basename(filePath))}.`;
+			const message = `Copying ${colors.cyan(basename(filePath))}.`;
 
 			logger.time(message);
 			await copy(filePath, targetPath);

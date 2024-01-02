@@ -1,7 +1,7 @@
 import { createReadStream } from 'node:fs';
-import { cyan } from 'picocolors';
 import { fileExists } from '../fs';
 import { getFilePath, getStorePath } from '../utils';
+import colors from 'picocolors';
 import logger from '../log';
 import polka from 'polka';
 
@@ -31,11 +31,11 @@ export async function serve(pathName: string = process.cwd(), options) {
 			const filePath = getFilePath(req.params.hash);
 
 			if (!await fileExists(filePath)) {
-				logger.error(`File ${cyan(req.params.hash)} not found.`);
+				logger.error(`File ${colors.cyan(req.params.hash)} not found.`);
 				return;
 			}
 
-			const successMessage = `Serving ${cyan(req.params.hash)}.`
+			const successMessage = `Serving ${colors.cyan(req.params.hash)}.`
 
 			logger.time(successMessage);
 			const readStream = createReadStream(filePath);
@@ -58,6 +58,6 @@ export async function serve(pathName: string = process.cwd(), options) {
 				throw err;
 			}
 
-			logger.info(`Running on ${cyan('http://localhost:' + options.port)}.`);
+			logger.info(`Running on ${colors.cyan('http://localhost:' + options.port)}.`);
 		});
 }

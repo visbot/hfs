@@ -1,7 +1,7 @@
-import { cyan } from 'picocolors';
 import { Database } from 'src/db';
 import { fileExists } from '../fs';
 import { getFilePath, getStorePath } from '../utils';
+import colors from 'picocolors';
 import logger from '../log';
 
 export async function remove(fileHashes: string[], options) {
@@ -18,11 +18,11 @@ export async function remove(fileHashes: string[], options) {
 		const targetPath = getFilePath(fileHash);
 
 		if (!await fileExists(targetPath)) {
-			logger.warn(`File ${cyan(fileHash)} not found.`);
+			logger.warn(`File ${colors.cyan(fileHash)} not found.`);
 			return
 		}
 
-		const message = `Deleting ${cyan(fileHash)}.`;
+		const message = `Deleting ${colors.cyan(fileHash)}.`;
 
 		logger.time(message);
 		await db.remove(fileHash);
