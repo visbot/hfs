@@ -18,7 +18,9 @@
 		"dev": "npm-run-all --parallel dev:*",
 		"dev:cli": "npm run build:cli -- --watch",
 		"dev:lib": "npm run build:lib -- --watch",
+		"lint:ts": "eslint ./src --ignore-path .gitignore",
 		"prepack": "npm run build",
+		"prepare": "husky install",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
@@ -26,6 +28,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"commander": "^11.1.0",
+		"eslint-plugin-json": "^3.1.0",
 		"glob": "^10.3.10",
 		"log-symbols": "^6.0.0",
 		"picocolors": "^1.0.0",
@@ -34,11 +37,16 @@
 	"devDependencies": {
 		"@types/node": "^20.10.5",
 		"@types/polka": "^0.5.7",
+		"@typescript-eslint/eslint-plugin": "^6.17.0",
+		"@typescript-eslint/parser": "^6.17.0",
 		"eslint": "^8.56.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^15.2.0",
 		"npm-run-all2": "^6.1.1",
 		"tsup": "^8.0.1",
 		"typescript": "^5.3.3"
+	},
+	"lint-staged": {
+		"*.(json|ts)": "eslint --cache --fix"
 	}
 }
