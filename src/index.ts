@@ -8,8 +8,8 @@ export function main() {
     program
         .command('init [path]')
         .description('initializes the virtual file-system')
-        .option('-D, --debug', 'print additional debug information', false)
-        .option('-f, --force', '')
+        .option('-D, --debug', 'prints additional debug information', false)
+        .option('-f, --force', 'forces overwriting existing files/folders')
         .action(async (args, options) => {
             if (options.debug) {
                 console.log('init', { args, options });
@@ -23,9 +23,9 @@ export function main() {
     program
         .command('add <file...>')
         .description('adds one of more files to the virtual file-system')
-        .option('-D, --debug', 'print additional debug information', false)
-        .option('-w, --cwd <path>', 'specify current work directory', process.cwd())
-        .option('-f, --force', '')
+        .option('-D, --debug', 'prints additional debug information', false)
+        .option('-w, --cwd <path>', 'specifies current work directory', process.cwd())
+        .option('-f, --force', 'forces overwriting existing files')
         .action(async (args, options) => {
             if (options.debug) {
                 console.log('add', { args, options });
@@ -37,9 +37,9 @@ export function main() {
 
     program
         .command('rm <file...>')
-        .description('adds one of more files to the virtual file-system')
-        .option('-D, --debug', 'print additional debug information', false)
-        .option('-w, --cwd <path>', 'specify current work directory', process.cwd())
+        .description('removes one of more file-hashes from the virtual file-system')
+        .option('-D, --debug', 'prints additional debug information', false)
+        .option('-w, --cwd <path>', 'specifies current work directory', process.cwd())
         .option('-f, --force', '')
         .action(async (args, options) => {
             if (options.debug) {
@@ -52,10 +52,9 @@ export function main() {
         
     program
         .command('serve [path]')
-        // .description('adds one of more files to the virtual file-system')
-        .option('-D, --debug', 'print additional debug information', false)
+        .description('serves file-hashes on the virtual file-system')
+        .option('-D, --debug', 'prints additional debug information', false)
         .option('-p, --port <port>', 'specifies the port', '3000')
-        // .option('-f, --force', '')
         .action(async (args, options) => {
             if (options.debug) {
                 console.log('serve', { args, options });
