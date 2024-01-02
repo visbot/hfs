@@ -2,16 +2,23 @@
   "name": "@visbot/hfs",
   "version": "0.0.0",
   "description": "",
+	"type": "module",
   "bin": {
     "hfs": "./bin/cli.js"
   },
-  "type": "module",
+	"exports": "./lib/lib.js",
+	"types": "./lib/lib.d.ts",
   "engine": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsup",
-    "dev": "npm run build -- --watch",
+    "build": "npm-run-all --parallel build:*",
+		"build:cli": "tsup src/cli.ts --outDir bin",
+		"build:lib": "tsup src/lib.ts --outDir lib",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:cli": "npm run build:cli -- --watch",
+    "dev:lib": "npm run build:lib -- --watch",
+		"prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -30,6 +37,7 @@
     "eslint": "^8.56.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
+    "npm-run-all2": "^6.1.1",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   }
