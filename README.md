@@ -39,6 +39,7 @@ Commands:
   add [options] <file...>        adds one of more files to the virtual file-system
   remove|rm [options] <file...>  removes one of more file-hashes from the virtual file-system
   serve [options] [path]         serves file-hashes on the virtual file-system
+  list [options] [hash...]       lists properties of a hash in the virtual file-system
   help [command]                 display help for command
 ```
 
