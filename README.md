@@ -29,8 +29,6 @@ $ npx @visbot/hfs
 Once setup, you can run `hfs --help` to list available options:
 
 ```txt
-$ hfs
-
 Usage: hfs [options] [command]
 
 Options:
