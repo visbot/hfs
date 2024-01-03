@@ -70,6 +70,7 @@ export function main() {
 		program
 				.command('list [hash...]')
 				.description('lists properties of a hash in the virtual file-system')
+				.alias('ls')
 				.option('-D, --debug', 'prints additional debug information', false)
 				.option('-B, --no-border', 'prints additional debug information', true)
 				.option('-C, --no-colors', 'prints additional debug information', true)
