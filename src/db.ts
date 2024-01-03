@@ -10,12 +10,7 @@ export class Database {
 	dbPath: string;
 	debug: boolean;
 	force: boolean;
-	state: {
-		version: number;
-		created: string;
-		modified: string;
-		files: Record<string, unknown>;
-	};
+	state: Data;
 
 	constructor(options) {
 		const storePath = getStorePath(options.cwd);
@@ -27,18 +22,21 @@ export class Database {
 
 	/**
 	 *  Initializes an empty database.
-	 * @returns {Record<string, unknown>}
+	 * @returns {Data}
 	 */
 	init() {
-		return {
+		this.state = {
 			version: 0,
 			created: new Date().toISOString(),
-			modified: null,
-			files: {}
+			modified: null
 		}
 	}
 
-	get() {
+	/**
+	 * Returns the current snapshot of the database.
+	 * @returns {Data}
+	 */
+	get(): FileProps {
 		return this.state.files;
 	}
 
@@ -51,7 +49,7 @@ export class Database {
 		if (!await fileExists(this.dbPath)) {
 			logger.warn('Database not found, creating new one.');
 
-			this.state = this.init();
+			this.init();
 			await writeFile(this.dbPath, JSON.stringify(this.state));
 		}
 
@@ -59,7 +57,7 @@ export class Database {
 			this.state = JSON.parse(await readFile(this.dbPath, 'utf-8'));
 		} catch (error) {
 			if (this.force) {
-				this.state = this.init();
+				this.init();
 				await writeFile(this.dbPath, JSON.stringify(this.state, null, 2));
 
 				return;
