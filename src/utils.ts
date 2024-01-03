@@ -39,17 +39,17 @@ export function getFilePath(hashValue: string, pathName: string = process.cwd())
 }
 
 export function modeToString(mode) {
-    const result = Buffer.from('drwxrwxrwx', 'ascii');
+		const result = Buffer.from('drwxrwxrwx', 'ascii');
 
-    if (!(mode & 0o4_0000)) {
-        result[0] = 45;
-    }
+		if (!(mode & 0o4_0000)) {
+				result[0] = 45;
+		}
 
-    for (let index = 1, bit = 0o400; bit; index++, bit >>= 1) {
-        if (!(mode & bit)) {
-            result[index] = 45;
-        }
-    }
+		for (let index = 1, bit = 0o400; bit; index++, bit >>= 1) {
+				if (!(mode & bit)) {
+						result[index] = 45;
+				}
+		}
 
-    return result.toString();
+		return result.toString();
 }
