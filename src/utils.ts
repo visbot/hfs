@@ -38,18 +38,18 @@ export function getFilePath(hashValue: string, pathName: string = process.cwd())
 	return join(storePath, `${hashValue[0]}${hashValue[1]}`.toLowerCase(), hashValue.toLowerCase());
 }
 
-// export function modeToString(mode) {
-//     const result = Buffer.from('drwxrwxrwx', 'ascii');
+export function modeToString(mode) {
+    const result = Buffer.from('drwxrwxrwx', 'ascii');
 
-//     if (!(mode & 0o4_0000)) {
-//         result[0] = 45;
-//     }
+    if (!(mode & 0o4_0000)) {
+        result[0] = 45;
+    }
 
-//     for (let index = 1, bit = 0o400; bit; index++, bit >>= 1) {
-//         if (!(mode & bit)) {
-//             result[index] = 45;
-//         }
-//     }
+    for (let index = 1, bit = 0o400; bit; index++, bit >>= 1) {
+        if (!(mode & bit)) {
+            result[index] = 45;
+        }
+    }
 
-//     return result.toString();
-// }
+    return result.toString();
+}

@@ -67,6 +67,23 @@ export function main() {
             await serve(args, options)
         });
 
+    program
+        .command('list [hash...]')
+			.description('lists properties of a hash in the virtual file-system')
+        .option('-D, --debug', 'prints additional debug information', false)
+        .option('-B, --no-border', 'prints additional debug information', true)
+        .option('-C, --no-colors', 'prints additional debug information', true)
+				.option('-w, --cwd <path>', 'specifies current work directory', process.cwd())
+        .action(async (args, options) => {
+            if (options.debug) {
+                console.log('list', { args, options });
+            }
+
+            const { list } = await import('./actions/list');
+
+            await list(args, options)
+        });
+
     program.parse();
 }
 

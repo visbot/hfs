@@ -42,7 +42,9 @@
 		"glob": "^10.3.10",
 		"log-symbols": "^6.0.0",
 		"picocolors": "^1.0.0",
-		"polka": "^0.5.2"
+		"polka": "^0.5.2",
+		"pretty-bytes": "^6.1.1",
+		"table": "^6.8.1"
 	},
 	"devDependencies": {
 		"@types/node": "^20.10.5",
