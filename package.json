@@ -47,10 +47,10 @@
 		"table": "^6.8.1"
 	},
 	"devDependencies": {
-		"@types/node": "^20.10.5",
+		"@types/node": "^20.11.5",
 		"@types/polka": "^0.5.7",
-		"@typescript-eslint/eslint-plugin": "^6.17.0",
-		"@typescript-eslint/parser": "^6.17.0",
+		"@typescript-eslint/eslint-plugin": "^6.19.1",
+		"@typescript-eslint/parser": "^6.19.1",
 		"eslint": "^8.56.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^15.2.0",
