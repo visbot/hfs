@@ -14,7 +14,7 @@ export async function list(hashes: string[] = [], options) {
 	}
 
 	const db = new Database(options);
-	await db.load();
+	await db.open();
 
 	const data = db.get();
 	let totalFileCount = 0;

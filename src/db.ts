@@ -45,7 +45,7 @@ export class Database {
 	 * @param options
 	 * @returns
 	 */
-	async load() {
+	async open() {
 		if (!await fileExists(this.dbPath)) {
 			logger.warn('Database not found, creating new one.');
 
@@ -78,7 +78,7 @@ export class Database {
 		}
 	}
 
-	async save() {
+	async close() {
 		const data = {
 			...this.state,
 			modified: new Date().toISOString()

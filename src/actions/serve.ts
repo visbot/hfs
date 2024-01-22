@@ -65,7 +65,7 @@ export async function serve(pathName: string = process.cwd(), options) {
 
 			const db = new Database(options);
 
-			await db.load();
+			await db.open();
 			const files = db.get();
 
 			const listItems = Object.keys(files).map(element => `<li><a href="${element}">${element}</a></li>`);

@@ -12,7 +12,7 @@ export async function remove(fileHashes: string[], options) {
 	}
 
 	const db = new Database(options);
-	await db.load();
+	await db.open();
 
 	fileHashes.map(async (fileHash) => {
 		const targetPath = getFilePath(fileHash);
@@ -29,5 +29,5 @@ export async function remove(fileHashes: string[], options) {
 		logger.timeEnd(message);
 	})
 
-	await db.save();
+	await db.close();
 }

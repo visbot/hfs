@@ -14,7 +14,7 @@ export async function add(filePaths: string[], options) {
 	}
 
 	const db = new Database(options);
-	await db.load();
+	await db.open();
 
 	const filePattern = await glob(filePaths, {
 		cwd: options.cwd
@@ -41,5 +41,5 @@ export async function add(filePaths: string[], options) {
 		})
 	);
 
-	await db.save();
+	await db.close();
 }
